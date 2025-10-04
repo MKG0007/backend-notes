@@ -1,1 +1,335 @@
+JavaScript Basics Must know before Starting Backend
+<------------------------------------------------------->
 
+Array in javaScript-->
+in the this language , Array can hold all the datatypes (primitive and user defined both)
+
+important mehtods for array-->
+
+1) forEach
+it is use to access all array element use the value for doing the task 
+->it not return any new array 
+
+arr.forEach(function(val){
+    console.log(val + 'hello');
+})
+
+2)map
+it is use to apply modification on all elements of array.
+->return the new modified array.
+->original and updated array both have same number of element
+
+let arr = arr.map(function(val){
+    return val+12;
+})
+
+
+3)filter
+it is to apply the filter process by using any condition defined by the developer on the array.
+and return filtered element as a newArray.
+
+
+let arr = arr.filter(function(val){
+
+    if(val%2 == 0) return val;
+})
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+objects in javaScript-->
+
+in simple words, objects are the collection of key value pairs.
+
+let obj = {
+age : 20,
+name : "mayank"
+}
+
+we can change the values like this-->
+obj.name = "kumar";
+
+but in some cases,
+we don't want someone make changes in the object
+
+then can stop the changes
+--> Object.freeze(obj_name);
+after this we can not add and change the values of the object 
+let obj = {
+    name : "mayank",
+    age : 20,
+    course : "computer"
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Synchronous--> 
+line by line execution
+
+asychronous-->
+when the code is async in nature then put it into the side stack(where process running parallel) and start executing sync code 
+and after execution check the aynsc code executed sucessfully or not if it is then take it to the main stack then execute it.
+
+
+->use async if you are doing asyncronous work in the function
+async function name(){
+    ........await fetch(`link`)
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+node.js-->
+it is the javaScript runtime environment 
+
+-->in simple words
+we write js code --> then it will goes to the js wrapper which wrapped up the v8 engine and then make some changes in it and gave it to the v8(written in c++) and it creates the server.  
+
+
+step up -->
+first we have to create a packages.json file 
+->npm init--> by this command it will asked to enter the package filename
+->npm init -y(it will not ask any question just create the package file)
+
+
+pre installed models of the node.js-->
+
+ file system -->
+
+//to get all the file system feature into the variable 
+const fs = require('fs');
+
+// this will rewrite the file and also create it if the file already not created
+fs.writeFile("hey.txt" , "hey hello kaise ho" , function(err){
+  // error handling
+    if(err) console.log("error");
+    else console.log("done");
+})
+
+
+// it is use to add the update the file
+// it adds the new content at the end
+fs.appendFile("hey.txt" , " i am mayank kumar gupta" , function(err){
+  //error handling
+    if(err) console.log("error");
+    else console.log("done");
+})
+
+
+// it is use to rename the file name 
+fs.rename('oldfilename' , 'newfilename.txt' , function(err){
+  // error handling
+    if(err) console.log("there some problem");
+    else console.log("all done");
+})
+
+
+
+// it is use to create/copy the data 
+fs.copyFile("hello.txt" , `yoho.txt` , function(err){
+  // error handling
+    if(err) console.error(err.message);
+    else console.log("all done");
+})
+
+
+
+// it is use to the remove the file 
+fs.unlink("yoho.txt" , function(err){
+  // error handling
+    if(err) console.error(err);
+    else console.log("file is removed");
+})
+
+
+// by default it remove the empty file folder 
+// but it can also remove the non-empty folder by set the recursive value: true
+fs.rmdir("./copy" ,{recursive: true}, function(err){
+    if(err) console.error(err.message);
+    else console.log("folder removed");
+})
+// note-->
+// but prefer to use "rm" to remove the non-empty folder 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+there is the set of rules to do something in internet and we must follow that rules 
+
+const http = require('http');
+
+// this is how we create a server 
+const server = http.createServer(function(req , res){
+    res.end("hello world");
+})
+server.listen(3000);
+
+
+
+npm(node package manager)-->
+files that comes with node.js core is called module 
+and what we download by using npm is called "package"
+
+installation by using npm-->
+----------------------------
+command -> npm i package_name
+
+for uninstall -->
+---------------------------
+npm uninstall package_name
+
+note-->
+to install any particullar version of the package
+-------------------------------------------------
+npm install package_name@version_name
+
+
+dependencies --> packages and package dependances
+devDependencies --> packages that only use on development period after project deployment they are in no use in the project.
+
+
+scripts in project-->
+default scripts(which auto downloaded at the node installation)--> npm name
+
+custom scripts(created by the user)--> npm run name
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+framework --> it have defined rules and flow that must followed by the developer for using the framework technology
+library --> it gives the tools and there no specific flow of the project. 
+
+
+Express.js framework-->
+-----------------------
+introduction to Express.js
+-> it is the npm package and framework
+->it manages everything from recieving the request and giving the response
+
+
+setting up the basic express.js--->
+-----------------------------------
+in node when we make changes in the code then it will not show on the browser until you restart it.
+->to avoid this 
+---------------
+we use "nodemon" npm package--> to do this for us in auto mode
+--> npm i nodemon -g(globle install) 
+
+
+// this line holding the function 
+const express = require('express');
+
+// doing the function call here 
+// it contian all the functionality of express
+const app = express()
+
+// it convert json data into mechine readable fromat 
+app.use(express.json());
+app.use(express.urlencoded({extended : true}));
+
+// middleware
+// it will execute first before all "get" route 
+app.use(function(req , res , next){
+    console.log("run the middleware");
+    next();// passes to next one which will going to execute and according to the route
+
+});
+
+
+// -----(route, request_handler function)
+// -----to only give the response
+app.get('/', (req, res) => {
+  res.send('Hello World and mayank')
+});
+
+// route other then root route
+app.get("/profile" , (req , res) =>{
+    res.send("champion i am mayank");
+});
+
+
+this is the in build route for error handler 
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+app.listen(3000 , function(){code});
+
+
+middleware-->
+-------------
+when server accept the resquest and just before the routing some thing stop the request to do some task on it that thing is called the middleware
+
+case of middleware->
+--------------------
+we add the user detail before sending to the server that makes request easir to accept and respond faster
+
+
+
+from handling and working with the forms-->
+when we try to do something on the website that time it asked for login first to identify the user and then after task completion the server forget about the user
+so, we have to login again and again
+
+and to avoid this--->
+cookie--> after your request it stores the user string (user detial) comes with the response and when we next try to do something it attacted that string with the request that help the server to know the user
+
+
+session-->the login period created by the help of cookie is called session
+
+
+when we send the request to the server the data is tranfer in the form of blob--> and to convert it into the readible format 
+
+
+
+
+ 
+small project--->
+1)initiallized the projects(creating the package.jsom file)
+
+2)install express package
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BackEnd--> to have two server
+1)-->application server(handles routings)
+2)-->database server(data related task)
+
+
+data storage-->where the user data stored
+like database
+
+types of databases-->
+1) sql(structured query language)-->data stored in the form table
+2) NoSql(not only sql)--> data stored in the form of object
+NoSql -- mongoDB
+
+Tree representation-->
+database --> collection(data belongs to the current project) --> document(inside the collection)
+
+-----------------------------------------------------
+CODE                    DATABASE
+-----------------------------------------------------
+mongoose.connect->   database create
+model create->       collection 
+CREATE->             document
+-----------------------------------------------------
+
+
+
+ 
+
+
+
+
+
+  
+
+
+  
