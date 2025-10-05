@@ -313,6 +313,8 @@ NoSql -- mongoDB
 Tree representation-->
 database --> collection(data belongs to the current project) --> document(inside the collection)
 
+steps to create the mongoDB connection-->
+
 -----------------------------------------------------
 CODE                    DATABASE
 -----------------------------------------------------
@@ -320,6 +322,61 @@ mongoose.connect->   database create
 model create->       collection 
 CREATE->             document
 -----------------------------------------------------
+
+
+full routing struture-->
+------------------------
+const express = require('express');//access and stroging the function 
+const app = express();//calling the function stores the result
+const path = require('path');
+
+// these both files use to convert blob into mechine sutable format
+app.use(express.json());
+app.use(express.urlencoded({extended : true}));
+
+// adding the path with the folder that will going to use for code files(lke css , js , images)
+
+// __dirname--> it gives the path of the current working folder 
+// and in this below line we are just joining the path with 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+// setting the ejs for template access
+app.set('view engine' , 'ejs');
+
+// this the route router
+app.get ("/" , function(req , res){
+    // we don't have to write extensio of the file
+    // rendring the ejs file
+    res.render("index");
+});
+
+// dynamic route-->
+// adjust the variable part of the router 
+// write the ':' before the common name make it dynamic
+app.get("/app/:about" , function(req , res){
+    // ----------------------(get the change part of the path / url)
+    res.send(`welcome Mr.${req.params.about}`);
+})
+
+// port creation
+app.listen(3000 , function
+    (){
+        console.log("running.....");
+    }
+)
+
+setting up ejs and ejs pages --->
+----------------------------------
+install ejs by the npm -> npm i ejs
+setup ejs as a view engine
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    
+
+
+
 
 
 
