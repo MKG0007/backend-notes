@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-3xl bg-zinc-800 p-8 rounded-2xl shadow-xl border border-zinc-700">
+    <!-- Title -->
+    <h1 class="text-3xl font-bold text-emerald-400 mb-8 text-center">✏️ Update User</h1>
+
+    <!-- Form -->
+    <form action="/update/<%= user._id %>" method="post" class="space-y-8">
+      
+      <!-- Grid Layout for Old vs New -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Old Info -->
+        <div class="space-y-6">
+          <h2 class="text-lg font-semibold text-zinc-300 mb-2 text-center">Old Info</h2>
+          <div>
+            <label for="oldname" class="block text-sm mb-2 text-zinc-400">Full Name</label>
+            <input 
+              type="text" id="oldname" name="oldname" placeholder="Old name"
+              value="<%= user.name %>"
+              readonly
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+              required>
+          </div>
+          <div>
+            <label for="oldemail" class="block text-sm mb-2 text-zinc-400">Email</label>
+            <input 
+              type="email" id="oldemail" name="oldemail" placeholder="Old email"
+              value="<%= user.email %>"
+              readonly
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+              required>
+          </div>
+          <div>
+            <label for="oldurl" class="block text-sm mb-2 text-zinc-400">Profile Image URL</label>
+            <input 
+              type="url" id="oldurl" name="oldurl" placeholder="Old image URL"
+              value="<%= user.image %>"
+              readonly
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white">
+
+          </div>
+        </div>
+
+        <!-- New Info -->
+        <div class="space-y-6">
+          <h2 class="text-lg font-semibold text-zinc-300 mb-2 text-center">New Info</h2>
+          <div>
+            <label for="newname" class="block text-sm mb-2 text-zinc-400">Full Name</label>
+            <input 
+              type="text" id="newname" name="newname" placeholder="New name"
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+              required>
+          </div>
+          <div>
+            <label for="newemail" class="block text-sm mb-2 text-zinc-400">Email</label>
+            <input 
+              type="email" id="newemail" name="newemail" placeholder="New email"
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+              required>
+          </div>
+          <div>
+            <label for="newurl" class="block text-sm mb-2 text-zinc-400">Profile Image URL</label>
+            <input 
+              type="url" id="newurl" name="newurl" placeholder="New image URL"
+              class="w-full px-4 py-2 rounded-lg bg-zinc-700 border border-zinc-600 
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white">
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button 
+        type="submit" 
+        class="w-full py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 
+               transition duration-200 font-semibold text-lg shadow-md">
+        ✅ Update User
+      </button>
+    </form>
+
+    <!-- See All Users -->
+    <div class="mt-6 text-center">
+      <a href="/read"
+         class="inline-block px-6 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 
+                transition duration-200 font-semibold shadow-md">
+        📋 See All Users
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
