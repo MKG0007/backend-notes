@@ -374,6 +374,89 @@ setup ejs as a view engine
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     
+mongoDB connection setup-->
+---------------------------
+
+//store the function in the varaible
+const mongoose = require('mongoose');
+
+// creating a database file 
+mongoose.connect(`mongodb://localhost:27017/mongopep`);
+
+// structure of this Schema (document)
+const userSchema = mongoose.Schema({
+    name : String,
+    username : String,
+    email : String
+})
+
+// exproting the schema to the mongoDB to store 
+// other file of the project can use it
+module.exports = mongoose.model("user" , userSchema);
+
+
+user creation with CRUD operation-->
+------------------------------------
+
+// mention in the route file use and access the schema
+const userModel = require("./usermodel");
+
+// user creation according to the defined schema
+app.get('/create' ,async function (req , res) {
+   let createUser =  await userModel.create({
+        name: "mayank",
+        email: "mgk@gmail.com",
+        username: "mkg"
+    })
+    console.log(createUser);
+    res.send(createUser);
+
+  });
+
+// user updation
+app.get('/update' ,async function (req , res) {
+   let updatedUser =  await userModel.findOneAndUpdate({username: "mkg"} , {name : "mayank kumar gupta"} , {new: true})
+    console.log(updatedUser);
+    res.send(updatedUser);
+
+  });
+
+// this for access all the user in the database
+app.get('/read' ,async function (req , res) {
+    // this will give all the user 
+    //find() always gives array even the there is no user
+   let alluser =  await userModel.find();
+
+    // this way we can select the specific user 
+    // and if there are multiple user of same username it will give the first one 
+//    let alluser = await userModel.findOne({usernam: "mayank"});
+    console.log(alluser);
+    res.send(alluser);
+
+  });
+
+// this is used to delete the user
+app.get('/delete' , async function (req , res) {
+    let users = await userModel.findOneAndDelete({username: "mkg"});
+    res.send(users);
+
+  });
+
+
+note-->
+findOneAndUpdate(this is use to find the single data from the database by using its "id"
+    but there are multiple with same attribute you mentioned
+        then it will give you the first one from the database)
+findOneAndDelete(for deletion)
+findOne(to find the single user from the database) 
+
+find(its gives all the user present in the database in the form of array)
+create(it is use to create the user)
+
+
+
+
+
 
 
 
