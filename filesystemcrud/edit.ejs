@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Page | <%= filename %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-zinc-950 text-white min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-zinc-900 p-8 rounded-2xl shadow-xl border border-zinc-800">
+    <h2 class="text-3xl font-bold text-emerald-400 mb-8 text-center">✏️ Edit File Name</h2>
+
+    <form action="/edit" method="post" class="space-y-6">
+      <!-- Old filename -->
+      <div>
+        <label for="prename" class="block text-sm mb-2 text-zinc-400">Old Filename</label>
+        <input 
+          type="text" 
+          id="prename"
+          name="prename"
+          value="<%= filename %>"
+          readonly
+          class="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 
+                 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-zinc-300"
+        >
+      </div>
+
+      <!-- New filename -->
+      <div>
+        <label for="name" class="block text-sm mb-2 text-zinc-400">New Filename</label>
+        <input 
+          type="text" 
+          id="name"
+          name="name"
+          placeholder="Enter new filename..." 
+          class="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 
+                 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+          required
+        >
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex items-center justify-between space-x-4">
+        <a href="/" 
+           class="flex-1 text-center py-2 rounded-lg bg-zinc-700 hover:bg-zinc-600 
+                  transition duration-200 font-medium text-zinc-200">
+          ⬅ Home
+        </a>
+        <input 
+          type="submit" 
+          value="Update File"
+          class="flex-1 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 
+                 transition duration-200 font-semibold cursor-pointer"
+        >
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
