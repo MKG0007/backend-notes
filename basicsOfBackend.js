@@ -200,12 +200,19 @@ custom scripts(created by the user)--> npm run name
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 framework --> it have defined rules and flow that must followed by the developer for using the framework technology
+-A framework provides a structured environment and a predefined flow for building applications. 
+It decides how your code should be organized and when it will be executed.
+
+
 library --> it gives the tools and there no specific flow of the project. 
+-A library is a collection of reusable functions or modules that you can call whenever you need them. 
+It doesn’t impose any structure or flow on your code.
 
 
 Express.js framework-->
 -----------------------
 introduction to Express.js
+-> npm i express(to install the express)
 -> it is the npm package and framework
 ->it manages everything from recieving the request and giving the response
 
