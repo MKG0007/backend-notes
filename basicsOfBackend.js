@@ -360,8 +360,12 @@ app.get ("/" , function(req , res){
 // adjust the variable part of the router 
 // write the ':' before the common name make it dynamic
 app.get("/app/:about" , function(req , res){
-    // ----------------------(get the change part of the path / url)
-    res.send(`welcome Mr.${req.params.about}`);
+    // get the change part of the path / url
+    // req.params.about
+    // if the multiple url part is variable then it will send the 
+    // change in the form of object
+    let username = req.params.about;
+    res.send(`welcome Mr.${username}`);
 })
 
 // port creation
