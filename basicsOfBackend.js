@@ -306,7 +306,11 @@ small project--->
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 BackEnd--> to have two server
 1)-->application server(handles routings)
+this server handles request , response and interaction between database if required
+to perform the task.
+    
 2)-->database server(data related task)
+this server handles data related task in which storing data of the project.
 
 
 data storage-->where the user data stored
