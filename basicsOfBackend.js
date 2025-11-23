@@ -89,7 +89,7 @@ it is the javaScript runtime environment
 we write js code --> then it will goes to the js wrapper which wrapped up the v8 engine and then make some changes in it and gave it to the v8(written in c++) and it creates the server.  
 
 
-step up -->
+setup -->
 first we have to create a packages.json file 
 ->npm init--> by this command it will asked to enter the package filename
 ->npm init -y(it will not ask any question just create the package file)
@@ -98,7 +98,6 @@ first we have to create a packages.json file
 pre installed models of the node.js-->
 
  file system -->
-
 //to get all the file system feature into the variable 
 const fs = require('fs');
 
@@ -110,7 +109,7 @@ fs.writeFile("hey.txt" , "hey hello kaise ho" , function(err){
 })
 
 
-// it is use to add the update the file
+// it is use to add and update the file
 // it adds the new content at the end
 fs.appendFile("hey.txt" , " i am mayank kumar gupta" , function(err){
   //error handling
@@ -158,8 +157,9 @@ fs.rmdir("./copy" ,{recursive: true}, function(err){
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
-there is the set of rules to do something in internet and we must follow that rules 
+there is the set of rules to do something in internet and we must follow these rules 
 
+//get the functions inside the variable
 const http = require('http');
 
 // this is how we create a server 
@@ -189,7 +189,7 @@ npm install package_name@version_name
 
 
 dependencies --> packages and package dependances
-devDependencies --> packages that only use on development period after project deployment they are in no use in the project.
+devDependencies --> packages that only use on development period after project deployment they have no use in the project.
 
 
 scripts in project-->
@@ -214,7 +214,7 @@ Express.js framework-->
 introduction to Express.js
 -> npm i express(to install the express)
 -> it is the npm package and framework
-->it manages everything from recieving the request and giving the response
+->it manages everything from recieving the request to giving the response
 
 
 setting up the basic express.js--->
