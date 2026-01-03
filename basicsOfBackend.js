@@ -127,7 +127,7 @@ fs.rename('oldfilename' , 'newfilename.txt' , function(err){
 
 
 
-// it is use to create/copy the data 
+// it is use to create/copy(yoho.txt) the data 
 fs.copyFile("hello.txt" , `yoho.txt` , function(err){
   // error handling
     if(err) console.error(err.message);
