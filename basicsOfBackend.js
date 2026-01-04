@@ -468,6 +468,27 @@ findOne(to find the single user from the database)
 find(its gives all the user present in the database in the form of array)
 create(it is use to create the user)
 
+------------------------------------------------------------------------------------------
+
+    
+Authentication (checking that user is the valid user or not)
+Authorization (checking that have the right to access any perticular information)
+
+package needed: jsonWebToken , bcrypt
+
+how to set cookie:
+- res.cookie("name" , "mayank")
+to get the cookie:
+- req.cookies
+
+note:-
+- after set-up the cookie to the user's browser.
+- whenever it make any request then the request will come with cookie by default.
+
+
+
+
+
 
 
 
