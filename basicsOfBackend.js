@@ -508,6 +508,20 @@ bcrypt.compare("normal password" , "hashed password" , (err , result)=>{
     console.log(result) //return boolean value
 })
 
+-after the first login of the user server return the keyString(token) to the browser as a cookie
+-to avoid re-authentication at each and every request
+
+syntax:
+setting the cookie-
+const jwt = reqiure('jsonwebtoken')
+let taken = jwt.sign({email: "mayank@example.com"} , "secret");
+res.cookie("token" , token);
+
+authentication process-
+let data = jwt.verify(req.cookies.token , "secret");
+//get the whole info in "data"
+
+
 
  
 
