@@ -486,6 +486,38 @@ note:-
 - whenever it make any request then the request will come with cookie by default.
 
 
+bcrypt:
+- it is a package use for password hashing.
+encryption using bcrytp:
+syntax-
+genSalt(this will give the salt(string) that use in encryption)
+hash(this will hash the password with the salt)
+    
+bcrypt.genSalt(10 , (err , salt)=>{
+    bcrypt.hash("password" , salt , (err , hash)=>{
+        console.log(hash) // hashed password
+    });
+});
+
+decryption using bcrypt:
+- we actually not do decryption just compare the password string with hashed password string 
+and bcrypt property(compare) automatically done comparision
+
+syntax:
+bcrypt.compare("normal password" , "hashed password" , (err , result)=>{
+    console.log(result) //return boolean value
+})
+
+
+ 
+
+
+
+
+
+
+    
+
 
 
 
